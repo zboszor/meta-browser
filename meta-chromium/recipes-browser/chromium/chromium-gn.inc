@@ -20,6 +20,7 @@ SRC_URI += "\
     file://backport/IWYU-for-chrome-browser-ui-tabs-organizatio.patch \
     file://backport/IWYU-for-content-browser-generic_sensor-fra.patch \
     file://backport/IWYU-for-g-c-service-shared_image-ozone_ima.patch \
+    file://backport/Add-missing-components-enterprise-buildflag.patch \
 "
 # Non-specific patches.
 SRC_URI += "\
