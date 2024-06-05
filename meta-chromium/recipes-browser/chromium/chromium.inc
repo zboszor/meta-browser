@@ -42,7 +42,7 @@ LIBCPLUSPLUS = "-stdlib=libc++"
 DEPENDS += "libcxx"
 
 inherit mime-xdg python3native
-DEPENDS += "python3-setuptools-native"
+DEPENDS += "python3-setuptools-native python3-html5lib-native"
 
 # Chromium itself is licensed under the 3-clause BSD license. However, it
 # depends upon several other projects whose copyright files are listed in
