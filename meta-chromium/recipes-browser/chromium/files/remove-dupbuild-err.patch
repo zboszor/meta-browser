@@ -1,0 +1,11 @@
+--- chromium-101.0.4951.54/tools/gn/bootstrap/bootstrap.py.orig	2025-09-01 12:28:46.000000000 +0200
++++ chromium-101.0.4951.54/tools/gn/bootstrap/bootstrap.py	2025-09-01 13:05:55.797969339 +0200
+@@ -123,7 +123,7 @@
+   shutil.copy2(
+       os.path.join(BOOTSTRAP_DIR, 'last_commit_position.h'), gn_build_dir)
+   subprocess.check_call(
+-      [ninja_binary, '-C', gn_build_dir, '-w', 'dupbuild=err', 'gn'])
++      [ninja_binary, '-C', gn_build_dir, 'gn'])
+   shutil.copy2(os.path.join(gn_build_dir, 'gn'), gn_path)
+ 
+   if not options.skip_generate_buildfiles:

@@ -22,6 +22,7 @@ SRC_URI += " \
     file://0011-Revert-Use-ffile-compilation-dir-instead-of-fdebug-c.patch \
     file://0012-ozone-wayland-don-t-build-xcb-for-pure-wayland-build.patch \
     file://0014-Fix-no-member-named-tie-in-namespace-std.patch \
+    file://remove-dupbuild-err.patch \
 "
 
 SRC_URI:append:libc-musl = "\
