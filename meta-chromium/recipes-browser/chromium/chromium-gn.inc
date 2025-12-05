@@ -109,7 +109,7 @@ DEPENDS += " \
     qemu-native \
     virtual/libgl \
 "
-DEPEND:append:runtime-llvm = " compiler-rt-native libcxx-native"
+DEPENDS:append:runtime-llvm = " compiler-rt-native libcxx-native"
 DEPENDS:append:libc-musl = " libexecinfo"
 
 LDFLAGS:append:libc-musl = " -lexecinfo"
