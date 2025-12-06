@@ -1,0 +1,22 @@
+Upstream-Status: Backport
+
+--- chromium-120.0.6099.224/chrome/browser/safe_browsing/BUILD.gn~	2025-12-06 05:59:23.000000000 +0100
++++ chromium-120.0.6099.224/chrome/browser/safe_browsing/BUILD.gn	2025-12-06 08:17:26.574004399 +0100
+@@ -29,6 +29,7 @@
+     "//chrome/browser/profiles:profile",
+     "//chrome/common",
+     "//chrome/common:constants",
++    "//components/compose:buildflags",
+     "//components/browser_sync",
+     "//components/enterprise:enterprise",
+     "//components/enterprise/common:strings",
+--- chromium-120.0.6099.224/chrome/browser/devtools/BUILD.gn~	2025-12-06 05:59:23.000000000 +0100
++++ chromium-120.0.6099.224/chrome/browser/devtools/BUILD.gn	2025-12-06 08:32:40.715262810 +0100
+@@ -292,6 +292,7 @@
+     }
+     if (enable_printing) {
+       deps += [
++        "//chrome/services/printing/public/mojom",
+         "//components/printing/browser/headless",
+         "//components/printing/browser/print_to_pdf",
+       ]
