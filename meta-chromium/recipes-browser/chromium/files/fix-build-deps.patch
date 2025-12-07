@@ -9,10 +9,10 @@ Upstream-Status: Backport
 +    "//components/compose:buildflags",
      "//components/browser_sync",
      "//components/enterprise:enterprise",
-     "//components/enterprise/common:strings",
+     "//components/enterprise/buildflags",
 --- chromium-120.0.6099.224/chrome/browser/devtools/BUILD.gn~	2025-12-06 05:59:23.000000000 +0100
 +++ chromium-120.0.6099.224/chrome/browser/devtools/BUILD.gn	2025-12-06 08:32:40.715262810 +0100
-@@ -292,6 +292,7 @@
+@@ -293,6 +293,7 @@
      }
      if (enable_printing) {
        deps += [
