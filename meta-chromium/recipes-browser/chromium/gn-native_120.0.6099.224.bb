@@ -14,35 +14,14 @@ S = "${WORKDIR}/chromium-${PV}"
 # evils.
 B = "${S}/out_bootstrap"
 
-SRC_URI += " \
-        file://0001-Pass-no-static-libstdc-to-gen.py.patch \
-"
-
-# The build system expects the linker to be invoked via the compiler. If we use
-# the default value for BUILD_LD, it will fail because it does not recognize
-# some of the arguments passed to it.
-BUILD_LD = "${CXX}"
-
-# Use LLVM's ar rather than binutils'. Depending on the optimizations enabled
-# in the build ar(1) may not be enough.
-BUILD_AR = "llvm-ar"
-
 DEPENDS = "clang-native ninja-native"
-DEPENDS:append:runtime-llvm = " compiler-rt-native libcxx-native"
-# Use libcxx headers for native parts
-CXXFLAGS:append:runtime-llvm = " -isysroot=${STAGING_DIR_NATIVE} -stdlib=libc++"
-# Use libgcc for native parts
-LDFLAGS:append:runtime-llvm = " -rtlib=libgcc -unwindlib=libgcc -stdlib=libc++ -lc++abi -rpath ${STAGING_LIBDIR_NATIVE}"
 
 do_configure[noexec] = "1"
-
-do_compile() {
-	python3 ${S}/tools/gn/bootstrap/bootstrap.py --skip-generate-buildfiles
-}
+do_compile[noexec] = "1"
 
 do_install() {
 	install -d ${D}${bindir}
-	install -m 0755 ${S}/out/Release/gn ${D}${bindir}/gn
+	install -m 0755 ${S}/buildtools/linux64/gn ${D}${bindir}/gn
 }
 
 INSANE_SKIP:${PN} += "already-stripped"
