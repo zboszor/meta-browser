@@ -45,6 +45,8 @@ SRC_URI += "\
     file://0020-Fix-implicitly-deleted-default-constructor-build-err.patch \
     file://0021-Don-t-delete-CrashKeyWithName-dtor.patch \
     file://0022-Use-base-ranges-instead-of-std-ranges.patch \
+    file://0001-ToTLinux-Fix-some-narrowing-errors.patch \
+    file://fix-build-errors-with-clang18.patch \
 "
 # ARM/AArch64-specific patches.
 SRC_URI:append:arm = "\
