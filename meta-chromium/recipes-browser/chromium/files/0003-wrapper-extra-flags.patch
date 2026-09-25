@@ -1,4 +1,4 @@
-From 86eff5ac4a024edcbcc5b42c7b2568703fe47588 Mon Sep 17 00:00:00 2001
+From fff84cbf424910b6bcf86b5516c540e8d908b980 Mon Sep 17 00:00:00 2001
 From: Raphael Kubo da Costa <kubo@igalia.com>
 Date: Wed, 8 Nov 2017 16:43:47 +0100
 Subject: [PATCH] wrapper: extra flags
@@ -10,14 +10,23 @@ Upstream-Status: Inappropriate [embedder specific]
 
 Signed-off-by: Raphael Kubo da Costa <kubo@igalia.com>
 ---
- chrome/installer/linux/common/wrapper | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ chrome/installer/linux/common/wrapper | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/chrome/installer/linux/common/wrapper b/chrome/installer/linux/common/wrapper
-index aaa46bf..7d8c8dd 100755
+index 5ee3f9f..c812062 100755
 --- a/chrome/installer/linux/common/wrapper
 +++ b/chrome/installer/linux/common/wrapper
-@@ -36,5 +36,7 @@
+@@ -15,7 +15,7 @@ xdg_app_dir="${XDG_DATA_HOME:-$HOME/.local/share/applications}"
+ mkdir -p "$xdg_app_dir"
+ [ -f "$xdg_app_dir/mimeapps.list" ] || touch "$xdg_app_dir/mimeapps.list"
+ 
+-export CHROME_VERSION_EXTRA="@@channel"
++export CHROME_VERSION_EXTRA="@@CHANNEL@@"
+ 
+ # We don't want bug-buddy intercepting our crashes. http://crbug.com/41012584
+ export GNOME_DISABLE_CRASH_DIALOG=SET_BY_GOOGLE_CHROME
+@@ -26,5 +26,8 @@ exec < /dev/null
  exec > >(exec cat)
  exec 2> >(exec cat >&2)
  
@@ -26,4 +35,7 @@ index aaa46bf..7d8c8dd 100755
 +
  # Note: exec -a below is a bashism.
 -exec -a "$0" "$HERE/@@PROGNAME" "$@"
-+exec -a "$0" "$HERE/@@PROGNAME" ${CHROME_EXTRA_ARGS} "$@"
++exec -a "$0" "$HERE/@@PROGNAME@@" ${CHROME_EXTRA_ARGS} "$@"
+-- 
+2.55.0
+
