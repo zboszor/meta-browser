@@ -36,7 +36,8 @@ SRC_URI += "\
     file://chromium-145-zip_ffi_glue-use-edition2024.patch \
     file://disable-sanitizer.patch \
     file://file_as_c_str.patch \
-    file://rust-cbor.patch \
+    file://crubit.patch \
+    file://verification-tokens.patch \
 "
 
 # ARM/AArch64-specific patches.
@@ -67,6 +68,7 @@ DEPENDS += " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'alsa', 'alsa-lib', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'at-spi2-core', '', d)} \
     atk \
+    bindgen-cli-native \
     bison-native \
     cairo \
     curl \
@@ -74,6 +76,7 @@ DEPENDS += " \
     flac \
     glib-2.0 \
     chromium-gn-native \
+    go-cross-${TUNE_PKGARCH} \
     gperf-native \
     gtk+3 \
     jpeg \
@@ -541,6 +544,7 @@ do_configure() {
 do_compile() {
 	ninja -v ${PARALLEL_MAKE} chrome chrome_sandbox chromedriver.unstripped
 }
+do_compile[network] = "1"
 do_compile[progress] = "outof:^\[(\d+)/(\d+)\]\s+"
 
 do_install() {
